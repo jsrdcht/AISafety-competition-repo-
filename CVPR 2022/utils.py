@@ -7,9 +7,11 @@ import numpy as np
 import timm
 import torch.nn as nn
 
+
 def makedirs(path):
     if not os.path.exists(path):
         os.makedirs(path)
+
 
 def load_model(model_name, pretrained=True):
     model = timm.create_model(model_name, pretrained=pretrained)
@@ -17,6 +19,7 @@ def load_model(model_name, pretrained=True):
     model.eval()
     print('# generator parameters:', sum(param.numel() for param in model.parameters()))
     return model
+
 
 def accuracy(output, target, topk=(1,)):
     """Computes the precision@k for the specified values of k"""
@@ -33,10 +36,12 @@ def accuracy(output, target, topk=(1,)):
         res.append(correct_k.mul_(100.0 / batch_size))
     return res
 
+
 class AverageMeter(object):
     """Computes and stores the average and current value
        Imported from https://github.com/pytorch/examples/blob/master/imagenet/main.py#L247-L262
     """
+
     def __init__(self):
         self.reset()
 
@@ -51,3 +56,7 @@ class AverageMeter(object):
         self.sum += val * n
         self.count += n
         self.avg = self.sum / self.count
+
+
+def cross_entropy(outputs, labels):
+    return nn.CrossEntropyLoss()(outputs, labels)
