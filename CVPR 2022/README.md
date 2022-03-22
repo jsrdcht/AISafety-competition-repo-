@@ -6,6 +6,7 @@
 该代码是CVPR 2022 安全竞赛 赛道1的训练示例。
 
 pytorch == 1.8
+
 torchvision == 0.9
 
 ## 使用环境
