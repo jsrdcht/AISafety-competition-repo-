@@ -9,6 +9,8 @@ pytorch == 1.8
 
 torchvision == 0.9
 
+主要训练逻辑在train.py中，后续会继续改进
+
 ## 使用环境
 
 
