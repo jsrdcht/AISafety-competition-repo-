@@ -1,7 +1,6 @@
 
 
-# 中文版 | [English](https://github.com/vtddggg/training_template_for_AI_challenger_sea8/blob/main/README_EN.md)
-
+# 中文版
 ## 使用方法
 
 该代码是CVPR 2022 安全竞赛 赛道1的训练示例。
