@@ -12,4 +12,9 @@ cfg = {
         'T_max': 30
     },
     'batch_size': 16,
+    'attack': False,
+}
+
+attack_param = {
+
 }

@@ -19,6 +19,7 @@ import cv2
 from config import cfg
 from dataset import *
 from utils import *
+from attack import *
 
 # Use CUDA
 use_cuda = torch.cuda.is_available()
@@ -82,10 +83,17 @@ def train(trainloader, model, optimizer, epoch):
         labels = labels.cuda()
         inputs = inputs.to('cuda', dtype=torch.float)
 
+
         outputs = model(inputs)
         loss = cross_entropy(outputs, labels)
-
         acc = accuracy(outputs, labels)
+
+        if cfg['attack']:
+            attacked_inputs = attack(inputs, model, params)
+            attacked_outputs = model(attacked_inputs)
+            attacked_loss = cross_entropy(attacked_outputs, labels)
+            loss += attacked_loss
+
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
